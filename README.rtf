@@ -1,0 +1,80 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\froman\fcharset0 Times-Roman;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue233;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c93333;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf0 Udacity\'92s Item Catalog Project\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 Full Stack Web Development Nanodegree
+\fs36 \
+
+\fs24 By Jacob Pelletier
+\fs36 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs24 \cf0 Project Overview: 
+\f0\b0 Develop an application that provides a list of items within a variety of categories. Provide a user registration and authentication system. Registered users should then have the ability to post, edit, and delete their own items. \
+
+\f1\b \
+Project Learning Goals: 
+\f0\b0 To develop a RESTful web application using Flask and implementing OAuth authentication. You will use CRUD operations. \
+\
+
+\f1\b Instructions for Use: \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \
+1. Install Vagrant and VirtualBox if needed\
+	a. link to vagrant: {\field{\*\fldinst{HYPERLINK "https://www.vagrantup.com/"}}{\fldrslt 
+\f2 \cf2 \expnd0\expndtw0\kerning0
+\ul \ulc2 \outl0\strokewidth0 \strokec2 https://www.vagrantup.com/}}\
+	b. Link to VirtualBox: {\field{\*\fldinst{HYPERLINK "https://www.virtualbox.org/wiki/Download_Old_Builds_5_1"}}{\fldrslt 
+\f2 \cf2 \expnd0\expndtw0\kerning0
+\ul \ulc2 \outl0\strokewidth0 \strokec2 https://www.virtualbox.org/wiki/Download_Old_Builds_5_1}}\
+		i. Install platform package only\
+\
+2. Clone or download repository\
+\
+3. Vagrantfile and requirements (pg_config.sh) files added in repository already.\
+\
+4. once in the command line, \'93cd\'94 to project and proceed to start vagrant machine\
+	$ cd projectfolder\
+	$ vagrant up\
+	$ vagrant ssh\
+\
+5. Now with vagrant machine running, cd into project file \
+	$ cd /vagrant/catalog\
+\
+6. Initiate database by with database setup\
+	$ python dbSetUp.py\
+\
+7. Populate database with menu categories\
+	$ python database_populate.py\
+\
+8. Run the project file\
+	$ python project.py\
+\
+9. Open browser, and input localhost address\
+	http://localhost/5000\
+\
+10. Start using the application!\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 Notes On Use:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \
+1. Categories are populated with the database, however users must populate the categories with specific items\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 Things To Improve: \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 While the project criteria are met, this application makes no sense in that why would multiple users edit a single menu? Hence the addition of a checkout cart where any registered users can add, edit, and remove items would be more practical. Additionally, only one user should edit the menu items themselves (otherwise there is a sense of too many chefs in the kitchen!). Further improvements on the project will address these issues. }
