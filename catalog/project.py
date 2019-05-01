@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import Flask, render_template, request, redirect, \
+    url_for, flash, jsonify
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from dbSetUp import Base, User, MenuCategory, MenuItem
@@ -15,10 +16,12 @@ import requests
 
 app = Flask(__name__)
 
-CLIENT_ID = json.loads(open('client_secrets.json', 'r').read())['web']['client_id']
+CLIENT_ID = json.loads(open('client_secrets.json', 'r')
+                       .read())['web']['client_id']
 APPLICATION_NAME = "Restaurant Menu Application"
 
-engine = create_engine('sqlite:///restaurantmenu.db', connect_args={'check_same_thread': False})
+engine = create_engine('sqlite:///restaurantmenu.db',
+                       connect_args={'check_same_thread': False})
 # stack overflow user:4537947
 Base.metadata.bind = engine
 
@@ -31,43 +34,55 @@ def showLogin():
     '''
     creates a random state token for each GET request.
     '''
-    state = ''.join(random.choice(string.ascii_uppercase + string.digits)
+    state = ''.join(random.choice
+                    (string.ascii_uppercase + string.digits)
                     for x in xrange(32))
     login_session['state'] = state
-    #return "The current session state is %s" % login_session['state']
+    #return "The current session state
+    # is %s" % login_session['state']
     return render_template('login.html', STATE=state)
 
 @app.route('/gconnect', methods=['POST'])
 def gconnect():
+    '''
+    connect with google api
+    creates flow from client_secrets.json file
+    exchanges authorization code for access token
+    '''
     # Validate state token
     if request.args.get('state') != login_session['state']:
-        response = make_response(json.dumps('Invalid state parameter.'), 401)
-        response.headers['Content-Type'] = 'application/json'
+        response = make_response(json.dumps
+                                 ('Invalid state parameter.'), 401)
+        response.headers['Content-Type'] = \
+            'application/json'
         return response
     # Obtain authorization code
     code = request.data
 
     try:
         # Upgrade the authorization code into a credentials object
-        oauth_flow = flow_from_clientsecrets('client_secrets.json', scope='')
+        oauth_flow = flow_from_clientsecrets ('client_secrets.json',
+                                              scope='')
         oauth_flow.redirect_uri = 'postmessage'
         credentials = oauth_flow.step2_exchange(code)
     except FlowExchangeError:
         response = make_response(
-            json.dumps('Failed to upgrade the authorization code.'), 401)
+            json.dumps('Failed to upgrade the authorization code.'),
+                        401)
         response.headers['Content-Type'] = 'application/json'
         return response
 
     # Check that the access token is valid.
     access_token = credentials.access_token
-    url = ('https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=%s'
-           % access_token)
+    url = ('https://www.googleapis.com/oauth2/v1/tokeninfo'
+           '?access_token=%s'% access_token)
     h = httplib2.Http()
     result = json.loads(h.request(url, 'GET')[1])
 
     # If there was an error in the access token info, abort.
     if result.get('error') is not None:
-        response = make_response(json.dumps(result.get('error')), 500)
+        response = make_response(json.dumps(result.get('error')),
+                                 500)
         response.headers['Content-Type'] = 'application/json'
         return response
 
@@ -75,23 +90,25 @@ def gconnect():
     gplus_id = credentials.id_token['sub']
     if result['user_id'] != gplus_id:
         response = make_response(
-            json.dumps("Token's user ID doesn't match given user ID."), 401)
+            json.dumps("Token's user ID doesn't match given user ID."),
+            401)
         response.headers['Content-Type'] = 'application/json'
         return response
 
     # Verify that the access token is valid for this app.
     if result['issued_to'] != CLIENT_ID:
         response = make_response(
-            json.dumps("Token's client ID does not match app's."), 401)
-        print "Token's client ID does not match app's."
+            json.dumps("Token's client ID does not match app's."),
+            401)
+        log("Token's client ID does not match app's.")
         response.headers['Content-Type'] = 'application/json'
         return response
 
     stored_access_token = login_session.get('access_token')
     stored_gplus_id = login_session.get('gplus_id')
     if stored_access_token is not None and gplus_id == stored_gplus_id:
-        response = make_response(json.dumps('Current user is already connected.'),
-                                 200)
+        response = make_response(json.dumps('Current user is '
+                                            'already connected.'), 200)
         response.headers['Content-Type'] = 'application/json'
         return response
 
@@ -122,7 +139,8 @@ def gconnect():
     output += '!</h1>'
     output += '<img src="'
     output += login_session['picture']
-    output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
+    output += ' " style = "width: 300px; height: 300px;border-radius: ' \
+              '150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
     flash("you are now logged in as %s" % login_session['username'])
     print "done!"
     return output
@@ -130,6 +148,10 @@ def gconnect():
 
 # User Helper Functions
 def createUser(login_session):
+    '''
+    takes in login session to create new user within gconnect
+    if user email is not already registered in the system
+    '''
     newUser = User(name=login_session['username'], email=login_session[
         'email'], picture=login_session['picture'])
     session.add(newUser)
@@ -138,10 +160,17 @@ def createUser(login_session):
     return user.id
 
 def getUserInfo(user_id):
+    '''
+    gets user_id in gconnect;
+    '''
     user = session.query(User).filter_by(id=user_id).one()
     return user
 
 def getUserID(email):
+    '''
+    evaulates user_id in gconnect; if user in database already,
+    skip creating new user
+    '''
     try:
         user = session.query(User).filter_by(email=email).one()
         return user.id
@@ -150,9 +179,13 @@ def getUserID(email):
 
 
 
-# DISCONNECT - Revoke a current user's token and reset their login_session
+# DISCONNECT - Revoke a current user's token
+# and reset their login_session
 @app.route('/gdisconnect')
 def gdisconnect():
+    '''
+    revoke token and disconnect user from application
+    '''
     category = session.query(MenuCategory)
     #grabs first restaurant out of database
     items = session.query(MenuItem)
@@ -160,13 +193,15 @@ def gdisconnect():
     access_token = login_session.get('access_token')
     if access_token is None:
         print 'Access Token is None'
-        response = make_response(json.dumps('Current user not connected.'), 401)
+        response = make_response(json.dumps('Current user not connected.'),
+                                 401)
         response.headers['Content-Type'] = 'application/json'
         return response
     print 'In gdisconnect access token is %s', access_token
     print 'User name is: '
     print login_session['username']
-    url = 'https://accounts.google.com/o/oauth2/revoke?token=%s' % login_session['access_token']
+    url = 'https://accounts.google.com/o/oauth2/revoke?token=%s' \
+          % login_session['access_token']
     h = httplib2.Http()
     result = h.request(url, 'POST')[0]
     print 'result is '
@@ -177,11 +212,15 @@ def gdisconnect():
         del login_session['username']
         del login_session['email']
         del login_session['picture']
-        response = make_response(json.dumps('Successfully disconnected.'), 200)
+        response = make_response(json.dumps('Successfully disconnected.'),
+                                 200)
         response.headers['Content-Type'] = 'application/json'
-        return (render_template('publicmenu.html', category=category, items=items))
+        return (render_template('publicmenu.html',
+                                category=category, items=items))
     else:
-        response = make_response(json.dumps('Failed to revoke token for given user. User token: '+access_token, 400))
+        response = make_response(json.dumps
+                                 ('Failed to revoke token for given user. '
+                                  'User token: '+access_token, 400))
         response.headers['Content-Type'] = 'application/json'
         return response
 
@@ -190,26 +229,44 @@ def gdisconnect():
 #Making an API Endpoint (GET Request)
 @app.route('/menu/JSON/')
 def restaurantMenuJSON(menu_category_id):
-    menu = session.query(MenuCategory).filter_by(id = category_id).one()
-    items = session.query(MenuItem).filter_by(category_id = category_id).all()
+    '''
+    json endpoint for site
+    '''
+    menu = session.query(MenuCategory).filter_by\
+        (id = category_id).one()
+    items = session.query(MenuItem).filter_by\
+        (category_id = category_id).all()
     return jsonify(MenuItems=[i.serialize for i in items])
 
 @app.route('/aboutUs')
 def restaurantAbout():
+    '''
+    route to about template
+    '''
     return render_template('aboutUs.html')
 
 @app.route('/contactUs')
 def restaurantContact():
+    '''
+    route to contact template
+    '''
     return render_template('contactUs.html')
 
 @app.route('/')
 @app.route('/index')
 def restaurantIndex():
+    '''
+    route to index template
+    '''
     return render_template('index.html')
 
 @app.route('/menu')
 # URL with variable PATH/<type: variable name>/PATH
 def restaurantMenu():
+    '''
+    route to menu page. if user is logged in, render
+    page with CRUD features, otherwise render publicmenu
+    '''
     #function that gets executed from root route
     #takes in menu category to specify which catgory you want to see
     category = session.query(MenuCategory)
@@ -217,35 +274,50 @@ def restaurantMenu():
     items = session.query(MenuItem)
     #lists all menu items for selected restaurant
     if 'username' not in login_session:
-        return (render_template('publicmenu.html', category=category, items=items))
+        return (render_template('publicmenu.html',
+                                category=category, items=items))
     else:
-        return (render_template ('menu.html', category=category, items=items))
+        return (render_template ('menu.html',
+                                 category=category, items=items))
     #return template to browser
 
 @app.route('/menu/<int:category_id>/new', methods=['GET', 'POST'])
 def newMenuItem(category_id):
+    '''
+    create new menu item, add to database
+    '''
     if request.method == "POST":
-        newItem = MenuItem(name=request.form['name'], price=request.form['price'], description=request.form['desc'],
-                           category_id=category_id, user_id=login_session['user_id'])
         # extract name field from newmenuitem form
+        newItem = MenuItem(name=request.form['name'],
+                           price=request.form['price'],
+                           description=request.form['desc'],
+                           category_id=category_id,
+                           user_id=login_session['user_id'])
         session.add(newItem)
         session.commit()
         flash("New menu item created!")
         return redirect(url_for("restaurantMenu"))
     else:
-        return render_template("newmenuitem.html", category_id=category_id)
+        return render_template("newmenuitem.html",
+                               category_id=category_id)
         # if POST request wasn't
 
 
 # Task 2: Create route for editMenuItem function here
 
 
-@app.route('/menu/<int:category_id>/<int:item_id>/edit/', methods=['GET', 'POST'])
+@app.route('/menu/<int:category_id>/<int:item_id>/edit/',
+           methods=['GET', 'POST'])
 def editMenuItem(category_id, item_id):
+    '''
+    edit database item. only creators of item may edit it
+    '''
     editedItem = session.query(MenuItem).filter_by(id=item_id).one()
     if login_session['user_id'] != editedItem.user_id:
-        return "<script>function myFunction() {alert('You are not authorized to edit this menu item. " \
-               "Please create your own item in order to edit items.');}</script><body onload='myFunction()''>"
+        return "<script>function myFunction() " \
+               "{alert('You are not authorized to edit this menu item. " \
+               "Please create your own item in order to edit items.');}" \
+               "</script><body onload='myFunction()''>"
     if request.method == 'POST':
         if request.form['name']:
             editedItem.name = request.form['name']
@@ -257,18 +329,26 @@ def editMenuItem(category_id, item_id):
         session.commit()
         return redirect(url_for("restaurantMenu"))
     else:
-        return render_template("editmenuitem.html", category_id=category_id, item_id=item_id, item=editedItem)
+        return render_template("editmenuitem.html",
+                               category_id=category_id, item_id=item_id,
+                               item=editedItem)
 
 
 # Task 3: Create a route for deleteMenuItem function here
 
 
-@app.route('/menu/<int:category_id>/<int:item_id>/delete/', methods=['GET', 'POST'])
+@app.route('/menu/<int:category_id>/<int:item_id>/delete/',
+           methods=['GET', 'POST'])
 def deleteMenuItem(category_id, item_id):
+    '''
+    delete database item. only creators of item may delete it
+    '''
     itemToDelete=session.query(MenuItem).filter_by(id=item_id).one()
     if login_session['user_id'] != itemToDelete.user_id:
-        return "<script>function myFunction() {alert('You are not authorized to edit this menu item. " \
-               "Please create your own item in order to edit items.');}</script><body onload='myFunction()''>"
+        return "<script>function myFunction() " \
+               "{alert('You are not authorized to edit this menu item. " \
+               "Please create your own item in order to edit items.');}" \
+               "</script><body onload='myFunction()''>"
     if request.method == 'POST':
         session.delete(itemToDelete)
         session.commit()
