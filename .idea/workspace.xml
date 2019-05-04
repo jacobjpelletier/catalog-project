@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd27eecb-30f2-41f1-97e1-2572bf26600d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-project" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-project" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catalog-project/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-project/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catalog-project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catalog-project/README.md" beforeDir="false" />
@@ -11,7 +14,7 @@
       <change beforePath="$PROJECT_DIR$/catalog-project/fb_client_secrets.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/catalog-project/initial commit" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/catalog-project/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-project/project.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog-project/restaurantmenu.db" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-project/restaurantmenu.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-project/restaurantmenu.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/catalog-project/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-project/static/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catalog-project/templates/aboutUs.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-project/templates/aboutUs.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catalog-project/templates/contactUs.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-project/templates/contactUs.html" afterDir="false" />
@@ -26,6 +29,9 @@
       <change beforePath="$PROJECT_DIR$/catalog-project/templates/newmenuitem.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-project/templates/newmenuitem.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catalog-project/templates/oauthlogin.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/catalog-project/templates/publicmenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-project/templates/publicmenu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/database_populate.py" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/database_populate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/project.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/restaurantmenu.db" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,54 +42,76 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/catalog-project/project.py">
+        <entry file="file://$PROJECT_DIR$/catalog/project.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="250" column="50" lean-forward="true" selection-start-line="250" selection-start-column="50" selection-end-line="250" selection-end-column="50" />
-              <folding>
-                <element signature="e#0#84#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="268">
+              <caret line="145" column="9" selection-start-line="145" selection-start-column="4" selection-end-line="145" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/catalog-project/templates/menu.html">
+        <entry file="file://$PROJECT_DIR$/catalog/database_populate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="668">
-              <caret line="54" column="94" selection-start-line="54" selection-start-column="94" selection-end-line="54" selection-end-column="94" />
+            <state relative-caret-position="729">
+              <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/catalog-project/dbSetUp.py">
+        <entry file="file://$PROJECT_DIR$/catalog/dbSetUp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="769">
-              <caret line="82" column="36" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
+            <state relative-caret-position="88">
+              <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+              <folding>
+                <element signature="e#96#106#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>print</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/catalog-project" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Lesson3/step3/project.py" />
         <option value="$PROJECT_DIR$/catalog-project/dbSetUp.py" />
-        <option value="$PROJECT_DIR$/catalog-project/project.py" />
         <option value="$PROJECT_DIR$/catalog-project/templates/menu.html" />
+        <option value="$PROJECT_DIR$/catalog-project/templates/contactUs.html" />
+        <option value="$PROJECT_DIR$/catalog-project/project.py" />
+        <option value="$PROJECT_DIR$/catalog-project/templates/newmenuitem.html" />
+        <option value="$PROJECT_DIR$/catalog-project/templates/form.html" />
+        <option value="$PROJECT_DIR$/catalog/templates/newmenuitem.html" />
+        <option value="$PROJECT_DIR$/catalog/dbSetUp.py" />
+        <option value="$PROJECT_DIR$/catalog/project.py" />
+        <option value="$PROJECT_DIR$/catalog/database_populate.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="572" />
+    <option name="x" value="451" />
     <option name="y" value="23" />
-    <option name="width" value="1348" />
+    <option name="width" value="1466" />
     <option name="height" value="973" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -102,13 +130,18 @@
             <path>
               <item name="catalog" type="b2602c69:ProjectViewProjectNode" />
               <item name="catalog" type="462c0819:PsiDirectoryNode" />
-              <item name="catalog-project" type="462c0819:PsiDirectoryNode" />
+              <item name="catalog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="catalog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="catalog" type="462c0819:PsiDirectoryNode" />
+              <item name="catalog" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="catalog" type="b2602c69:ProjectViewProjectNode" />
               <item name="catalog" type="462c0819:PsiDirectoryNode" />
               <item name="catalog-project" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -118,6 +151,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -147,18 +181,20 @@
       <option name="presentableId" value="Default" />
       <updated>1556646417571</updated>
       <workItem from="1556646422819" duration="689000" />
-      <workItem from="1556654707456" duration="1341000" />
+      <workItem from="1556654707456" duration="1639000" />
+      <workItem from="1556719817722" duration="11825000" />
+      <workItem from="1557012194670" duration="589000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2030000" />
+    <option name="totallyTimeSpent" value="14742000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="572" y="23" width="1348" height="973" extended-state="0" />
+    <frame x="451" y="23" width="1466" height="973" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20137826" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19382022" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -194,20 +230,87 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/catalog-project/templates/publicmenu.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog-project/templates/contactUs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog-project/templates/deletemenuitem.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog-project/templates/editmenuitem.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog-project/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog-project/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog-project/templates/menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="54" column="94" selection-start-line="54" selection-start-column="94" selection-end-line="54" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog-project/templates/newmenuitem.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog-project/templates/form.html" />
+    <entry file="file://$PROJECT_DIR$/catalog/templates/publicmenu.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog/templates/newmenuitem.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/catalog-project/project.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="250" column="50" lean-forward="true" selection-start-line="250" selection-start-column="50" selection-end-line="250" selection-end-column="50" />
+        <state relative-caret-position="409">
+          <caret line="197" column="4" selection-start-line="197" selection-start-column="4" selection-end-line="197" selection-end-column="58" />
           <folding>
             <element signature="e#0#84#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/catalog-project/templates/menu.html">
+    <entry file="file://$PROJECT_DIR$/catalog/dbSetUp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="668">
-          <caret line="54" column="94" selection-start-line="54" selection-start-column="94" selection-end-line="54" selection-end-column="94" />
+        <state relative-caret-position="88">
+          <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+          <folding>
+            <element signature="e#96#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog/project.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="145" column="9" selection-start-line="145" selection-start-column="4" selection-end-line="145" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog/database_populate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="729">
+          <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
